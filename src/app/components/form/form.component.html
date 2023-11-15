@@ -1,0 +1,19 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <!-- Campo Nome -->
+        <label for="nome">Nome:</label>
+        <input type="text" id="name" name="name" required formControlName="name">
+        <br>
+    
+        <!-- Campo Prezzo -->
+        <label for="prezzo">Prezzo:</label>
+        <input type="number" id="price" name="price" step="0.01" required formControlName="price">
+        <br>
+    
+        <!-- Campo Descrizione -->
+        <label for="descrizione">Descrizione:</label>
+        <textarea id="description" name="description" rows="4" required formControlName="description"></textarea>
+        <br>
+    
+        <!-- Pulsante di Invio -->
+        <input type="submit" value="Invia">
+</form>
