@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -14,7 +14,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class FormComponent implements OnInit {
 
-constructor(private products: ProductsService){}
+constructor(private products: ProductsService, private router: Router){}
  productForm: any
   ngOnInit(): void {
 
@@ -40,6 +40,7 @@ onSubmit(){
     console.log(data);
     
   })
+  this.router.navigate(['./products']);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../services/products.service';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormComponent } from '../form/form.component';
 
 @Component({
@@ -13,18 +13,20 @@ import { FormComponent } from '../form/form.component';
 })
 export class ProductsComponent implements OnInit {
 
-
-
   productsList: any
-  constructor(private products: ProductsService) {}
+  constructor(private products: ProductsService, private router: Router) {}
 
   ngOnInit(): void {
     this.products.getProducts('http://localhost:3000/api/products/').subscribe(data =>{
     this.productsList = data
-    console.log(this.productsList);
     });
 
   }
+
+  editProduct(product: any) {
+    // console.log(product);
+    this.router.navigate(['/edit', product]);
+    }
 
   deleteProduct(id: number) {
       this.products.deleteProduct('http://localhost:3000/api/products/', id).subscribe(
