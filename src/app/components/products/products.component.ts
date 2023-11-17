@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../services/products.service';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { FormComponent } from '../form/form.component';
 
 @Component({
     selector: 'app-products',
     standalone: true,
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [CommonModule,]
+    imports: [CommonModule,RouterOutlet, RouterLink, RouterLinkActive, FormComponent]
 })
 export class ProductsComponent implements OnInit {
 
