@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
-  imports: [CommonModule,ReactiveFormsModule]
+  imports: [CommonModule,ReactiveFormsModule, RouterLink, RouterLinkActive, RouterOutlet]
 })
 export class FormComponent implements OnInit {
 
