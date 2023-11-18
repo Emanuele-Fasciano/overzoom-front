@@ -7,18 +7,18 @@
 
         <div class="input-group mb-3">
             <input required type="text" class="form-control" placeholder="Nome articolo" aria-label="Username"
-                aria-describedby="basic-addon1" id="name" name="name" formControlName="name">
+                aria-describedby="basic-addon1" id="name" name="name" formControlName="name" value="{{product.name}}">
         </div>
 
         <div class="input-group mb-3">
             <input class="form-control" placeholder="Prezzo" aria-label="Prezzo" aria-describedby="basic-addon1"
-                id="price" name="price" step="0.01" required formControlName="price">
+                id="price" name="price" step="0.01" required formControlName="price" value="{{product.price}}">
         </div>
 
         <div class="input-group">
             <span class="input-group-text">Descrizione</span>
             <textarea class="form-control" aria-label="With textarea" id="description" name="description" rows="4"
-                required formControlName="description"></textarea>
+                required formControlName="description">{{product.description}}</textarea>
         </div>
 
         <!-- Pulsante di Invio -->

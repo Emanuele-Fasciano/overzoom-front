@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../services/products.service';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormComponent } from '../form/form.component';
+import { StoreService } from '../../services/store.service';
 
 @Component({
     selector: 'app-products',
@@ -14,10 +15,10 @@ import { FormComponent } from '../form/form.component';
 export class ProductsComponent implements OnInit {
 
   productsList: any
-  constructor(private products: ProductsService, private router: Router) {}
+  constructor(private products: ProductsService, private router: Router, private store: StoreService) {}
 
   ngOnInit(): void {
-    this.products.getProducts('http://localhost:3000/api/products/').subscribe(data =>{
+    this.store.getProducts().subscribe(data =>{
     this.productsList = data
     });
 
