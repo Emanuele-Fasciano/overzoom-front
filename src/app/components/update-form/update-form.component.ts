@@ -61,10 +61,10 @@ export class UpdateFormComponent implements OnInit {
 
   }).subscribe((data) =>{
     console.log(data);
+    // redirect alla pagina dei prodotti
+    this.router.navigate(['./products']);
     
   })
-  // redirect alla pagina dei prodotti
-  this.router.navigate(['./products']);
   }
 
 }

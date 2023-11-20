@@ -32,14 +32,12 @@ export class ProductsComponent implements OnInit {
 
   // sul click del cestino elimino il prodotto 
   deleteProduct(id: number) {
-      this.products.deleteProduct('http://localhost:3000/api/products/', id).subscribe(
-        () => {
-          console.log(`Prodotto con ID ${id} eliminato con successo`);
-        },
-        error => {
-          console.error(`Errore durante l'eliminazione del prodotto con ID ${id}`, error);
-        }
-      )
+      this.products.deleteProduct('http://localhost:3000/api/products/', id).subscribe((data) =>{
+
+    // redirect alla pagina dei prodotti
+    this.router.navigate(['./products']);
+    
+  })
       
       }
 

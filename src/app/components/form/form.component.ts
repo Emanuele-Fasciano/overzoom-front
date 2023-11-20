@@ -40,11 +40,11 @@ onSubmit(){
 
   }).subscribe((data) =>{
     console.log(data);
+    this.router.navigate(['./products']);
     
   })
 
   // redirect alla pagina products
-  this.router.navigate(['./products']);
-  }
+}
 
 }
