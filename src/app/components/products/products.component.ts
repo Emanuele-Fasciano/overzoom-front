@@ -24,9 +24,9 @@ export class ProductsComponent implements OnInit {
 
   }
 
-  editProduct(product: any) {
+  updateProduct(productId: any) {
     // console.log(product);
-    this.router.navigate(['/edit', product]);
+    this.router.navigate(['/edit', productId]);
     }
 
   deleteProduct(id: number) {

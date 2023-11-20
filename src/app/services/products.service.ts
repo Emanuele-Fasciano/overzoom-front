@@ -12,6 +12,10 @@ export class ProductsService {
   return this.http.post(url, body)
   }
 
+  updateProduct(url: string, id: number, body: {}){
+    return this.http.put(`${url}${id}`, body)
+  }
+
 
   deleteProduct(url: string, id: number){
   return this.http.delete(`${url}${id}`)
