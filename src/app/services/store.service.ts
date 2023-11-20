@@ -8,6 +8,7 @@ export class StoreService {
 
   constructor(private http: HttpClient) { }
 
+    // chiamata GET per recuperare tutti i prodotti
     getProducts(){
     return  this.http.get('http://localhost:3000/api/products/')
   }

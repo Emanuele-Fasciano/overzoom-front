@@ -50,13 +50,8 @@ export class UpdateFormComponent implements OnInit {
     
   }
 
+  // sul submit del form chiamo updateProduct e passo URL, ID e i dati aggiornati
   onSubmit(){
-
-    console.log(this.updateForm.value.name);
-    console.log(this.productId);
-    
-    
-
   this.products.updateProduct('http://localhost:3000/api/products/',this.productId, 
   {
     'id' : this.productId,
@@ -68,6 +63,7 @@ export class UpdateFormComponent implements OnInit {
     console.log(data);
     
   })
+  // redirect alla pagina dei prodotti
   this.router.navigate(['./products']);
   }
 

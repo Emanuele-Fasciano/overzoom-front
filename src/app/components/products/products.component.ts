@@ -18,26 +18,26 @@ export class ProductsComponent implements OnInit {
   constructor(private products: ProductsService, private router: Router, private store: StoreService) {}
 
   ngOnInit(): void {
+    // recupero i dati della tabella dallo store
     this.store.getProducts().subscribe(data =>{
     this.productsList = data
     });
 
   }
 
+  // sul click del button per l'update(penna) redirect sulla pagina del form dell'update passando ID del prodotto
   updateProduct(productId: any) {
-    // console.log(product);
     this.router.navigate(['/edit', productId]);
     }
 
+  // sul click del cestino elimino il prodotto 
   deleteProduct(id: number) {
       this.products.deleteProduct('http://localhost:3000/api/products/', id).subscribe(
         () => {
           console.log(`Prodotto con ID ${id} eliminato con successo`);
-          // Puoi aggiornare la lista dei prodotti o eseguire altre azioni necessarie dopo l'eliminazione.
         },
         error => {
           console.error(`Errore durante l'eliminazione del prodotto con ID ${id}`, error);
-          // Gestisci eventuali errori qui
         }
       )
       

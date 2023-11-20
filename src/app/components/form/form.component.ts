@@ -18,6 +18,7 @@ constructor(private products: ProductsService, private router: Router){}
  productForm: any
   ngOnInit(): void {
 
+    // istanzio un nuovo formGroup
     this.productForm = new FormGroup({
     name: new FormControl(),
       price: new FormControl(),
@@ -29,6 +30,7 @@ constructor(private products: ProductsService, private router: Router){}
 
 onSubmit(){
 
+  // al submit chiamo addProduct e passo l'URL e il body con i dati del form
   this.products.addProduct('http://localhost:3000/api/products/', 
   {
     'id' : this.productForm.value.id,
@@ -40,6 +42,8 @@ onSubmit(){
     console.log(data);
     
   })
+
+  // redirect alla pagina products
   this.router.navigate(['./products']);
   }
 
