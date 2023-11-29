@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
 
 @Component({
@@ -39,7 +39,6 @@ onSubmit(){
     'description' : this.productForm.value.description,
 
   }).subscribe((data) =>{
-    console.log(data);
     this.router.navigate(['./products']);
     
   })

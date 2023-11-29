@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormComponent } from '../form/form.component';
-import { StoreService } from '../../services/store.service';
+import { StoreService } from '../../../services/store.service';
 
 @Component({
     selector: 'app-products',
@@ -33,6 +33,9 @@ export class ProductsComponent implements OnInit {
   // sul click del cestino elimino il prodotto 
   deleteProduct(id: number) {
       this.products.deleteProduct('http://localhost:3000/api/products/', id).subscribe((data) =>{
+
+      console.log(data);
+      
 
     // redirect alla pagina dei prodotti
     this.router.navigate(['./products']);

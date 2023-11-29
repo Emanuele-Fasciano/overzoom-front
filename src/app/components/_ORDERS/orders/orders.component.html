@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="my-4 text-center">Ordini</h1>
+
+    <a class="btn btn-primary my-4" routerLink="add">Aggiungi ordine</a>
+
+    <table class="table table-striped" *ngIf="ordersList.length">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Data Ordine</th>
+                <th scope="col">Totale Ordine</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of ordersList">
+                <th scope="row">{{order.id}}</th>
+                <td>{{order.date}}</td>
+                <td>€ {{order.total}}</td>
+                <td>
+                    <div class="btn btn-secondary me-3" (click)="detailsOrder(order.id)"><i
+                            class="fa-solid fa-eye"></i></div>
+                    <!-- <div class="btn btn-primary" (click)="updateProduct(product.id)"><i class="fa-solid fa-pencil"></i>
+                    </div> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 class="my-4 text-center" *ngIf="!ordersList.length">Non ci sono ordini</h2>
+</div>

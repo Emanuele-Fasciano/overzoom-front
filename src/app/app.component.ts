@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { ProductsComponent } from './components/products/products.component';
-import { FormComponent } from './components/form/form.component';
+import { ProductsComponent } from './components/_PRODUCTS/products/products.component';
+import { FormComponent } from './components/_PRODUCTS/form/form.component';
 
 @Component({
   selector: 'app-root',

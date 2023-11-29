@@ -1,0 +1,32 @@
+
+<div class="container">
+    <a class="btn btn-primary my-4" routerLink="../../orders">Indietro</a>
+
+    <h1 class="text-center my-4">Dettagli ordine n° {{order.id}}</h1>
+
+    <div class="card m-auto p-4" style="width: 30rem;">
+        
+        <h3 class="text-center"><strong>Prodotti</strong></h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Quantità</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of order.products">
+                    <td>{{product.product.name}}</td>
+                    <td>€ {{product.product.price}}</td>
+                    <td>{{product.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="text-center my-2"><strong>Totale ordine:</strong> €{{order.total}}</h3>
+
+        <p><strong class="me-2">Data ordine:</strong> {{order.date}}</p>
+    </div>
+</div>
