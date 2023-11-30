@@ -2,6 +2,11 @@
     width: 70vw;
 }
 
+.products-list h1{
+    background-color: rgb(116, 190, 255);
+    border: 2px solid rgb(60, 164, 255);
+}
+
 .products-list .row{
     padding: 50px;
 }
@@ -26,6 +31,7 @@
 
 .cart h1{
     background-color: #ffb703;
+    border: 2px solid #ff9900;
 }
 
 .send-order{

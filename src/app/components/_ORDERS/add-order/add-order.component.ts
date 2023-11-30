@@ -21,19 +21,30 @@ export class AddOrderComponent implements OnInit {
     // recupero i prodotti dallo store
     this.store.getProducts().subscribe(data =>{
     this.productsList = data
-    
+
+    // Carico il carrello salvato nel localStorage al momento dell'inizializzazione del componente
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      this.cart = JSON.parse(savedCart);
+    }
     });
     
   }
 
   // aggiungo prodotti al carrello
   addProduct(product: any){
-    this.cart.push(product) 
+    this.cart.push(product)
+
+    // Salvo il carrello aggiornato nel localStorage ogni volta che aggiungo un prodotto
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   // elimino prodotti dal carrello
   removeProduct(i: any){
     this.cart.splice(i, 1)
+
+    // Salvo il carrello aggiornato nel localStorage ogni volta che rimuovo un prodotto
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   // invio ordine
@@ -58,6 +69,9 @@ export class AddOrderComponent implements OnInit {
         this.router.navigate([`./orders`]);
     
       })
+
+      this.cart = [];
+      localStorage.removeItem('cart');
     
   }
   
