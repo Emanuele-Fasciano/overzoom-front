@@ -38,4 +38,13 @@ export class OrdersComponent implements OnInit {
     this.router.navigate(['/show', id]);
     
 }
+
+deleteOrder(id: number){
+    this.orders.deleteOrder('http://localhost:3000/api/orders/', id).subscribe((data) =>{
+
+    // redirect alla pagina dei prodotti
+    // this.router.navigate(['./orders']);
+    
+  })
+}
 }

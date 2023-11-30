@@ -40,7 +40,7 @@ onSubmit(){
 
   }).subscribe((data) =>{
     this.router.navigate(['./products']);
-    
+ 
   })
 
   // redirect alla pagina products

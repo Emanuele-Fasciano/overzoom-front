@@ -1,0 +1,35 @@
+.products-list{
+    width: 70vw;
+}
+
+.products-list .row{
+    padding: 50px;
+}
+
+.products-list .card{
+    margin-bottom: 25px;
+    min-width: 250px;
+    border: 2px solid #158fcc !important;
+}
+
+.add-button{
+    width: 100%;
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: calc(100vh - 60px);
+    background-color: #ffda7d;
+}
+
+.cart h1{
+    background-color: #ffb703;
+}
+
+.send-order{
+    align-self: center;
+    width: 30%;
+    border: 1px solid black;
+}

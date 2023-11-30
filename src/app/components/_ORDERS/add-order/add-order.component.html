@@ -1,0 +1,40 @@
+<div class="d-flex">
+    <div class="products-list">
+        <h1 class="text-center my-4">Prodotti</h1>
+        <div class="row">
+            <div class="col-4" *ngFor="let product of productsList; let i = index">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center">{{product.name}}</h3>
+                        <h4 class="">Prezzo: €{{product.price}}</h4>
+                        <p class="card-text">{{product.description}}</p>
+                        <div class="btn btn-primary add-button" (click)="addProduct(product)">Aggiungi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart">
+        <h1 class="text-center py-4">Carrello</h1>
+        <table *ngIf="cart.length" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Elimina</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cartItem of cart; let i = index">
+                    <td>{{cartItem.name}}</td>
+                    <td>€ {{cartItem.price}}</td>
+                    <td>
+                        <div class="btn btn-danger me-3" (click)="removeProduct(i)"><i class="fa-solid fa-trash"></i></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="cart.length" class="btn btn-warning send-order" (click)="sendOrder(cart)">Aggiungi ordine</div>
+    </div>
+</div>
