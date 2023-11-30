@@ -14,6 +14,7 @@ import { OrdersService } from '../../../services/orders.service';
 export class AddOrderComponent implements OnInit {
   productsList: any
   cart: any = []
+  totOrder = 0
 
   constructor(private store: StoreService, private orders: OrdersService, private router: Router,){}
 
@@ -22,30 +23,42 @@ export class AddOrderComponent implements OnInit {
     this.store.getProducts().subscribe(data =>{
     this.productsList = data
 
-    // Carico il carrello salvato nel localStorage al momento dell'inizializzazione del componente
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      this.cart = JSON.parse(savedCart);
+    // Carico il carrello e il totale dell'ordine nel localStorage
+    const cart = localStorage.getItem('cart');
+    if (cart) {
+      this.cart = JSON.parse(cart);
     }
     });
-    
+    const total = localStorage.getItem('totOrder');
+    if (total) {
+      this.totOrder = JSON.parse(total);
+    }
   }
 
   // aggiungo prodotti al carrello
   addProduct(product: any){
     this.cart.push(product)
 
-    // Salvo il carrello aggiornato nel localStorage ogni volta che aggiungo un prodotto
+    // aggiorno la variabile che tiene conto del totale
+    this.totOrder += parseFloat(product.price);
+
+    // Salvo il carrello e il totale aggiornato nel localStorage ogni volta che aggiungo un prodotto
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    localStorage.setItem('totOrder', JSON.stringify(this.totOrder));
   }
 
   // elimino prodotti dal carrello
-  removeProduct(i: any){
+  removeProduct(i: any, price: any){
     this.cart.splice(i, 1)
+
+    // aggiorno la variabile che tiene conto del totale
+    this.totOrder -= parseFloat(price)
 
     // Salvo il carrello aggiornato nel localStorage ogni volta che rimuovo un prodotto
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    localStorage.setItem('totOrder', JSON.stringify(this.totOrder));
   }
+
 
   // invio ordine
   sendOrder(cart: any){
@@ -66,12 +79,15 @@ export class AddOrderComponent implements OnInit {
       
       // al click di 'aggiungi ordine' passo l'url e il body contenente i dati dell'ordine
       this.orders.addOrder('http://localhost:3000/api/orders/', {orderedProducts}).subscribe((data) =>{
-        this.router.navigate([`./orders`]);
+      this.router.navigate([`./orders`]);
     
       })
 
+      // dopo l'invio svuoto il carrello, azzero il totoale e rimuovo cart e totOrder dal localStorage
       this.cart = [];
+      this.totOrder = 0;
       localStorage.removeItem('cart');
+      localStorage.removeItem('totOrder');
     
   }
   
