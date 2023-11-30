@@ -36,9 +36,14 @@ export class ProductsComponent implements OnInit {
 
       console.log(data);
       
+    // Aggiorno la tabella dopo l'eliminazione del prodotto
+    // Ottiengo l'URL corrente
+    const currentUrl = this.router.url;
 
-    // redirect alla pagina dei prodotti
-    this.router.navigate(['./products']);
+    // Navigo alla stessa rotta
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
     
   })
       
