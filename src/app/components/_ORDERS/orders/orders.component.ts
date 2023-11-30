@@ -42,8 +42,15 @@ export class OrdersComponent implements OnInit {
 deleteOrder(id: number){
     this.orders.deleteOrder('http://localhost:3000/api/orders/', id).subscribe((data) =>{
 
-    // redirect alla pagina dei prodotti
-    // this.router.navigate(['./orders']);
+
+    // Aggiorno la tabella dopo l'eliminazione dell'ordine
+    // Ottiengo l'URL corrente
+    const currentUrl = this.router.url;
+
+    // Navigo alla stessa rotta
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
     
   })
 }
